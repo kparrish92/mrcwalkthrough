@@ -1,0 +1,37 @@
+---
+title: "Presentation Ninja"
+subtitle: "⚔<br/>with xaringan"
+author: "Yihui Xie"
+institute: "RStudio, PBC"
+date: "2016/12/12 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Slide 1
+
+```{r, echo = FALSE, message = FALSE, include=FALSE}
+
+library(untidydata)
+library(tidyverse)
+
+```
+
+
+```{r, echo = FALSE}
+
+
+ld <- language_diversity %>% 
+  filter(., Continent == "Africa") %>% 
+  pivot_wider(names_from = "Measurement", values_from = "Value")
+
+ld %>% 
+  ggplot(., aes(x = Population, y = Langs)) + geom_point() + geom_smooth(method = "lm")
+
+```
+
